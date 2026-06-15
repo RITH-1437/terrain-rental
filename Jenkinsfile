@@ -1,10 +1,6 @@
 pipeline {
     agent any
 
-    triggers {
-        pollSCM('H/5 * * * *')
-    }
-
     stages {
 
         stage('Checkout') {
@@ -16,33 +12,28 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh './mvnw clean package -DskipTests'
+                bat 'mvnw.cmd clean package -DskipTests'
             }
         }
 
         stage('Test') {
             steps {
-                sh './mvnw test'
+                bat 'mvnw.cmd test'
             }
         }
 
         stage('Deploy') {
             steps {
-                sh 'ansible-playbook -i inventory.ini playbook.yml'
+                bat 'wsl ansible-playbook -i inventory.ini playbook.yml'
             }
         }
     }
 
     post {
-
-        success {
-            echo 'Build, Test and Deploy Success'
-        }
-
         failure {
             emailext(
-                subject: "Build Failed: ${env.JOB_NAME}",
-                body: "Build failed. Please check Jenkins.",
+                subject: "Build Failed",
+                body: "Jenkins build failed.",
                 to: "srengty@gmail.com"
             )
         }

@@ -1,0 +1,36 @@
+
+- name: Question 3 Deployment
+  hosts: web
+  become: yes
+
+  tasks:
+
+    - name: Verify connection
+      ping:
+
+    - name: Go to project and pull latest code
+      shell: |
+        cd /var/www/terrain-rental
+        git pull origin main
+
+    - name: Build Maven project
+      shell: |
+        cd /var/www/terrain-rental
+        ./mvnw clean package -DskipTests
+
+    - name: Run tests
+      shell: |
+        cd /var/www/terrain-rental
+        ./mvnw test
+
+    - name: Backup MySQL database
+      shell: |
+        mysqldump -u root -p'Hello@123' rin_nairith-db > /root/backup.sql
+
+    - name: Verify backup exists
+      stat:
+        path: /root/backup.sql
+      register: backup_file
+
+    - debug:
+        var: backup_file.stat.size

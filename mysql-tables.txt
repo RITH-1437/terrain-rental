@@ -1,0 +1,8 @@
+Tables_in_rin_nairith-db
+bookings
+favorites
+payments
+reviews
+sample
+terrain_images
+terrains

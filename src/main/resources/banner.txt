@@ -1,0 +1,17 @@
+ ${AnsiColor.GREEN}
+████████╗███████╗██████╗ ██████╗  █████╗ ██╗███╗   ██╗
+╚══██╔══╝██╔════╝██╔══██╗██╔══██╗██╔══██╗██║████╗  ██║
+   ██║   █████╗  ██████╔╝██████╔╝███████║██║██╔██╗ ██║
+   ██║   ██╔══╝  ██╔══██╗██╔══██╗██╔══██║██║██║╚██╗██║
+   ██║   ███████╗██║  ██║██║  ██║██║  ██║██║██║ ╚████║
+   ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝
+
+                                                               
+${AnsiColor.CYAN}Terrain Rental System
+${AnsiColor.YELLOW}Final Exam 2026
+${AnsiColor.DEFAULT}
+
+${application.title}
+Version: ${application.version}
+Spring Boot: ${spring-boot.version}
+Java: ${java.version}
